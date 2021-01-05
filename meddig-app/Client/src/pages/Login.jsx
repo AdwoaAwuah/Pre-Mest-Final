@@ -3,7 +3,6 @@ import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-// import{useHistory} from 'react-router-dom'
 import { Redirect } from "react-router-dom";
 import "../styles.css"
 
@@ -36,43 +35,6 @@ const Login = ({ login }) => {
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />;
   }
-
-// const Login = () => {
-//     let history = useHistory('')
-//     const [email, setEmail] = useState("")
-//     const [password, setPassword] = useState("")
-
-//     const handlelogin = e => {
-//         e.preventDefault()
-        
-//       //   if (email === password) {
-//       //     localStorage.setItem('IsAuthenticated', 'true')  //creates an object to store data
-          
-//       //     //Redirect to homepage
-//       //     history.push('/symptomscheck')
-
-//       //     alert('Login Successful')
-//       // } else{
-//       //     alert('Invalid Login')
-//       // }
-
-//         const data = {
-//           email: email,
-//           password: password}
-
-//         axios.post("/api/auth/login/", data)
-        
-//           localStorage.setItem('IsAuthenticated', 'true')  //creates an object to store data
-          
-//              //Redirect to homepage
-//               history.push('/assessment')
-    
-//         //     console.log(response.data)
-        
-       
-
-//     }
-
 
     return (
        

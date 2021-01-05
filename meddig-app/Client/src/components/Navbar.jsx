@@ -13,17 +13,17 @@ import {
 
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from '@material-ui/icons/Info';
-import AssessmentIcon from '@material-ui/icons/Assessment';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
+import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: { width: 'inherit' },
   link: {
     textDecoration: 'none',
     color: theme.palette.text.primary
-  }
+  }, 
 }))
 
 function Navbar() {
@@ -54,6 +54,7 @@ const toggleDrawer = (open) =>( event) =>{
                 <ListItemText primary={"Home"} />
               </ListItem>
             </Link>
+
             <Link to="/Aboutcovid" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
@@ -63,14 +64,16 @@ const toggleDrawer = (open) =>( event) =>{
               </ListItem>
             </Link>
           </List>
-          <Link to="/assessment" className={classes.link}>
+
+          <Link to="/currentdata" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
-                  <AssessmentIcon/>
+                  < LocationSearchingIcon/>
                 </ListItemIcon>
-                <ListItemText primary={"Check Symptoms"} />
+                <ListItemText primary={"Current Data"} />
               </ListItem>
             </Link>
+      
             <Link to="/hospital" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
@@ -79,6 +82,7 @@ const toggleDrawer = (open) =>( event) =>{
                 <ListItemText primary={"Search Hospitals"} />
               </ListItem>
             </Link>
+
             <Link to="/login" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
@@ -87,6 +91,7 @@ const toggleDrawer = (open) =>( event) =>{
                 <ListItemText primary={"Login"} />
               </ListItem>
             </Link>
+            
             <Link to="/signup" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>

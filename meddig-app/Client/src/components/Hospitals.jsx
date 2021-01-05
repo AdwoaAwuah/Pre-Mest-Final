@@ -14,10 +14,7 @@ const HospitalsPage =()=> {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             }
-            // else {
-            //     let userLat = 35.78;
-            //     let userLon = -78.64;
-            // }
+            
         }
 
         const showPosition = (position) => {

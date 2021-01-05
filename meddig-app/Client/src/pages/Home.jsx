@@ -1,33 +1,4 @@
-// import React from 'react'
-// import "../styles.css"
-// import {Link} from "react-router-dom";
 
-// // import logo from '../assets/logo.jpg'
-
-// const Home = () => {
-//     return (
-        
-//       <div>
-//           {/* */}
-//         <div className="home">
-        
-//             <h1>Welcome to MedDig </h1>
-//             <p> Already a member? <Link to="/login">
-//           Login
-//         </Link></p>
-//         <br></br>
-//         {/* <img src={logo} alt="Logo" /> */}
-//         <br></br>
-//         Want to know what your symptoms means? <p>  <Link to="/signup">
-//           Create an account today
-//         </Link></p>
-//         </div>
-//         </div>
-//     )
-// }
-
-
-// export default Home;
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import "./Home.css"
@@ -55,6 +26,7 @@ const Home = (props) => {
   const [recovered, setRecovered] = useState("~");
   const [death, setDeath] = useState("~");
   const [updated, setUpdated] = useState("~");
+
 
   useEffect(() => {
     Axios.get("https://api.thevirustracker.com/free-api?global=stats")
@@ -138,13 +110,13 @@ const Home = (props) => {
                  
                   <li>
                     <Link to="/Aboutcovid" className="btn btn-transparent scrollto">
-                      <span>About COVID-19</span>
+                      <span>Read More</span>
                       <em className={["icon ni ni-arrow-right"].join(" ")}></em>
                     </Link>
                   </li>
                   <li>
-                    <Link to ="/assessment" className="btn btn-transparent scrollto">
-                      <span>Check your status</span>
+                    <Link to ="/currentdata" className="btn btn-transparent scrollto">
+                      <span>Current Data</span>
                       <em className={["icon ni ni-arrow-right"].join(" ")}></em>
                     </Link>
                   </li>

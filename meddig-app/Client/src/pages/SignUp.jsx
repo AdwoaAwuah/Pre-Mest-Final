@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-// import {useHistory} from 'react-router-dom'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 
@@ -26,14 +25,6 @@ function SignupForm() {
 
   const handleSignupOnSubmit = (event) => {
     event.preventDefault();
-    // TODO - validate!
-    // signUpUser({
-    //   firstName: userObject.firstName,
-    //   lastName: userObject.lastName,
-    //   email: userObject.email,
-    //   password: userObject.password,
-    //   isLoggedIn: true,
-    // });
     axios.post('/signup', {firstName: userObject.firstName,
       lastName: userObject.lastName,
       email: userObject.email,
@@ -44,32 +35,11 @@ function SignupForm() {
     alert('Sign Up Successful')
 
   };
+
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />;
   }
 
-// const Signup = () => {
-//   let history = useHistory();
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [firstName, setfirstName] = useState("");
-//   const [lastName, setlastName] = useState("");
-
-//   const handleSignupOnSubmit = (event) => {
-//     event.preventDefault();  //keeps page from reloading
-//        axios.post('/api/auth/signup', {firstName,lastName,email,password})
-
-      
-//          //Redirect to login
-//          history.push('/login')
-        
-//         alert('Sign Up Successful')
-
-       
-       
-      
-   
-// }
     return (
         <div className="SignUp">
       <h1>SignUp Page</h1>

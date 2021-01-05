@@ -11,6 +11,7 @@ import Assessment from './components/assessment';
 import HospitalsPage from './components/Hospitals';
 import section_1 from './components/About';
 import Navbar from './components/Navbar';
+import CurrentData from './components/Current';
 
 
 export const AppContext = React.createContext()
@@ -30,6 +31,7 @@ function App() {
                     <Route path={"/signup"} component={Signup}/>
                     <Route path={"/assessment"} component={Assessment}/>
                     <Route path={"/hospital"} component={HospitalsPage}/>
+                    <Route path={"/currentdata"} component={CurrentData}/>
                     <Route path={"/Aboutcovid"} component={section_1}/>
                     <Route exact={true} path={"/"} component={Home}/>
                     </AppContext.Provider>

@@ -1,0 +1,49 @@
+.col-lg-7,
+.col-xl-4,
+.col-lg-5,
+.col-lg-4 {
+	position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px
+}
+.col-xl-4 {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%
+}
+.text-block .subtitle {
+    text-transform: uppercase;
+    color: #2a81ea;
+    font-size: 1.125rem;
+    margin-bottom: 0.125rem;
+    letter-spacing: 0.1em;
+  }
+  .text-block .title {
+    text-transform: uppercase;
+  }
+  
+  .text-block .title + p {
+    padding-top: 0.6875rem;
+  }
+  
+  .text-block .title + p.lead {
+    padding-top: 0.75rem;
+  }  
+  .wgs-head {
+    border-bottom: 1px solid #e7e8ff;
+    padding: 1.25rem 1.25rem;
+  }
+  
+  .wgs-head h4,
+  .wgs-head h5,
+  .wgs-head h6 {
+    margin-bottom: 0;
+  }
+  .col-md-8 {
+    flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%
+}
+.col-sm-10 {
+    flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%
+}

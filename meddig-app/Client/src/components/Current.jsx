@@ -81,7 +81,7 @@ function CurrentData() {
   const handleDarkThemeChange = () => {
     setDarkTheme(!darkTheme);
   };
- 
+
   return (
     <div
       style={{
@@ -98,7 +98,7 @@ function CurrentData() {
         data-tip="Last modified date: 16/05/2020 - v2.2"
         style={{ textAlign: "center" }}
       >
-        COVID-19 Current Update
+        COVID-19 Update
       </h2>
       <ReactTooltip effect="solid" />
       <br />

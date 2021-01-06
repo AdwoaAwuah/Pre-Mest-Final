@@ -152,14 +152,14 @@ const Assessment = () => {
           <hr />
           <small>
             <span className="disclosure">Disclosure: </span>
-            Please be advised the MedDig symptom checker is not a diagnosis, it is
-          for informational purposes only and does not represent, in any way, a
-          qualified medical opinion. The symptom checker and its results are
-          entirely based on WHO and CDC guidelines. If this is an emergency, 
-          call your local emergency number immediately. Do
-          not proceed with the symptom checker. Medical attention is required
-          immediately. Your data is safe. Information that you provide is
-          anonymous and not shared with anyone.
+            Please be advised the MedDig symptom checker is not a diagnosis, it
+            is for informational purposes only and does not represent, in any
+            way, a qualified medical opinion. The symptom checker and its
+            results are entirely based on WHO and CDC guidelines. If this is an
+            emergency, call your local emergency number immediately. Do not
+            proceed with the symptom checker. Medical attention is required
+            immediately. Your data is safe. Information that you provide is
+            anonymous and not shared with anyone.
           </small>
         </div>
       </div>
@@ -171,7 +171,7 @@ const Assessment = () => {
       <h5> Assess Your Health</h5>
       <br></br>
       <p className="text-center">
-        Answer few questions to find out your symptoms.{" "}
+        Answer few questions to find out your covid status.{" "}
       </p>
       <hr />
       <p className="font-weight-bold">{questionsObject.text}</p>
@@ -200,11 +200,11 @@ const Assessment = () => {
           Please be advised the MedDig symptom checker is not a diagnosis, it is
           for informational purposes only and does not represent, in any way, a
           qualified medical opinion. The symptom checker and its results are
-          entirely based on WHO and CDC guidelines. If this is an emergency, 
-          call your local emergency number immediately. Do
-          not proceed with the symptom checker. Medical attention is required
-          immediately. Your data is safe. Information that you provide is
-          anonymous and not shared with anyone.
+          entirely based on WHO and CDC guidelines. If this is an emergency,
+          call your local emergency number immediately. Do not proceed with the
+          symptom checker. Medical attention is required immediately. Your data
+          is safe. Information that you provide is anonymous and not shared with
+          anyone.
         </small>
       </div>
     </div>

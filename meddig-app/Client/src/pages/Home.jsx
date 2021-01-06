@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import "./Home.css"
-import {Link} from "react-router-dom";
+import "./Home.css";
+import { Link } from "react-router-dom";
 
 export const monthAsString = (monthIndex) => {
   return [
@@ -26,7 +25,6 @@ const Home = (props) => {
   const [recovered, setRecovered] = useState("~");
   const [death, setDeath] = useState("~");
   const [updated, setUpdated] = useState("~");
-
 
   useEffect(() => {
     Axios.get("https://api.thevirustracker.com/free-api?global=stats")
@@ -97,7 +95,7 @@ const Home = (props) => {
                   <span className="heading-sm">
                     {" "}
                     <span className="sup">COVID-19</span>{" "}
-                    <span className="sub">Checker</span>{" "}
+                    <span className="sub">App</span>{" "}
                   </span>
                 </h1>
                 <p>
@@ -107,15 +105,20 @@ const Home = (props) => {
                   2020.
                 </p>
                 <ul className="nk-banner-btns">
-                 
                   <li>
-                    <Link to="/Aboutcovid" className="btn btn-transparent scrollto">
+                    <Link
+                      to="/Aboutcovid"
+                      className="btn btn-transparent scrollto"
+                    >
                       <span>Read More</span>
                       <em className={["icon ni ni-arrow-right"].join(" ")}></em>
                     </Link>
                   </li>
                   <li>
-                    <Link to ="/currentdata" className="btn btn-transparent scrollto">
+                    <Link
+                      to="/currentdata"
+                      className="btn btn-transparent scrollto"
+                    >
                       <span>Current Data</span>
                       <em className={["icon ni ni-arrow-right"].join(" ")}></em>
                     </Link>

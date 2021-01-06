@@ -1,11 +1,9 @@
-const User = require('../models/user');
-const jwt = require('jsonwebtoken')
-const cookie = require('cookie-parser')
-const bcrypt = require('bcrypt')
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+const cookie = require("cookie-parser");
+const bcrypt = require("bcrypt");
 
-
-const controller = {}
-
+const controller = {};
 
 /**
  * Signup Controller
@@ -18,29 +16,27 @@ const controller = {}
  *
  * Object destructuring
  */
-controller.getUser=(req, res, next) => {
-    if (req.user) {
-      return res.json({ user: req.user });
-    } else {
-      return res.json({ user: null });
-    }
-  },
+(controller.getUser = (req, res, next) => {
+  if (req.user) {
+    return res.json({ user: req.user });
+  } else {
+    return res.json({ user: null });
+  }
+}),
+  (controller.signup = async (request, response) => {
+    const { firstName, lastName, email, password } = request.body;
 
-controller.signup = async (request, response) => {
-    const {firstName, lastName, email, password} = request.body
-
-    const user = new User({firstName, lastName, email, password})
-    console.log(user)
+    const user = new User({ firstName, lastName, email, password });
+    console.log(user);
 
     try {
-        const newUser = await user.save()
-       return response.send({message: "User Created Successfully", newUser})
+      const newUser = await user.save();
+      return response.send({ message: "User Created Successfully", newUser });
     } catch (exception) {
-       console.log(exception)
-       return response.status(500).send({error: "internal server error"})
+      console.log(exception);
+      return response.status(500).send({ error: "internal server error" });
     }
-}
-
+  });
 
 /**
  * Algorithm
@@ -66,58 +62,61 @@ controller.signup = async (request, response) => {
  * @returns {Promise<void>}
  */
 controller.login = async (request, response) => {
-    const {email, password} = request.body
-    console.log(request.body)
-    await User.findOne({email: email}, (error, user) => {
-        if (error) {
-           return response.status(500).send({error: "INTERNAL SERVER ERROR"})
-       
-        }
-                
-        if (!user) {
-           return response.status(401).send({message: "Invalid Username or password"})
-        }
+  const { email, password } = request.body;
+  console.log(request.body);
+  await User.findOne({ email: email }, (error, user) => {
+    if (error) {
+      return response.status(500).send({ error: "INTERNAL SERVER ERROR" });
+    }
 
-        // Verify user password
-        // user.checkPassword(password, (error, isMatch) => {
-        //     error ? response.status(500).send({error: error}) : {}
-        // })
+    if (!user) {
+      return response
+        .status(401)
+        .send({ message: "Invalid Username or password" });
+    }
 
-        try {
-            const valid = bcrypt.compareSync(request.body.password, user.password)
-            if (!valid) {
-               return response.status(401).send({message: "Invalid Username or password"})
-            }
+    // Verify user password
+    // user.checkPassword(password, (error, isMatch) => {
+    //     error ? response.status(500).send({error: error}) : {}
+    // })
 
-            // // Log user in
-            const payload = {email: user.email, id: user.id}
-            const token = jwt.sign(payload, process.env.JWT_SECRET)
-            response.writeHead(200, {
-              "Set-Cookie": `token=Bearer ${token}; HttpOnly`,
-              "Access-Control-Allow-Credentials": true
-            }).send(user)
-            // response.cookie("Authorization", `Bearer ${token}`, {httpOnly: true, maxAge: 86_400_000})
+    try {
+      const valid = bcrypt.compareSync(request.body.password, user.password);
+      if (!valid) {
+        return response
+          .status(401)
+          .send({ message: "Invalid Username or password" });
+      }
 
-            // response.send(user)
+      // // Log user in
+      const payload = { email: user.email, id: user.id };
+      const token = jwt.sign(payload, process.env.JWT_SECRET);
+      response
+        .writeHead(200, {
+          "Set-Cookie": `token=Bearer ${token}; HttpOnly`,
+          "Access-Control-Allow-Credentials": true,
+        })
+        .send(user);
+      // response.cookie("Authorization", `Bearer ${token}`, {httpOnly: true, maxAge: 86_400_000})
 
-            // response.send({message: "Login successfull"})
-        } catch (exception) {
-            console.log(exception)
-           return response.status(500).send({error: "INTERNAL SERVER ERROR"})
-        }
+      // response.send(user)
 
-        
-    })
-}
+      // response.send({message: "Login successfull"})
+    } catch (exception) {
+      console.log(exception);
+      return response.status(500).send({ error: "INTERNAL SERVER ERROR" });
+    }
+  });
+};
 //logout
 
-controller.logout= (req, res) => {
-    if (req.user) {
-      req.session.destroy();
-      res.clearCookie('connect.sid'); // clean up!
-      return res.json({ msg: 'logging you out' });
-    } else {
-      return res.json({ msg: 'no user to log out!' });
-    }
-  },
-module.exports = controller
+(controller.logout = (req, res) => {
+  if (req.user) {
+    req.session.destroy();
+    res.clearCookie("connect.sid"); // clean up!
+    return res.json({ msg: "logging you out" });
+  } else {
+    return res.json({ msg: "no user to log out!" });
+  }
+}),
+  (module.exports = controller);

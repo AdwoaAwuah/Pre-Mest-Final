@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import axios from 'axios';
+import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 function SignupForm() {
@@ -25,26 +25,27 @@ function SignupForm() {
 
   const handleSignupOnSubmit = (event) => {
     event.preventDefault();
-    axios.post('/signup', {firstName: userObject.firstName,
+    axios.post("/signup", {
+      firstName: userObject.firstName,
       lastName: userObject.lastName,
       email: userObject.email,
       password: userObject.password,
-      isLoggedIn: true,})
+      isLoggedIn: true,
+    });
 
     setRedirectTo("/assessment");
-    alert('Sign Up Successful')
-
+    alert("Sign Up Successful");
   };
 
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />;
   }
 
-    return (
-        <div className="SignUp">
+  return (
+    <div className="SignUp">
       <h1>SignUp Page</h1>
-         <Form onSubmit={handleSignupOnSubmit}>
-      <Form.Group size="lg" controlId="firstName">
+      <Form onSubmit={handleSignupOnSubmit}>
+        <Form.Group size="lg" controlId="firstName">
           <Form.Label>Firstname</Form.Label>
           <Form.Control
             autoFocus
@@ -53,8 +54,8 @@ function SignupForm() {
             value={userObject.firstName}
             onChange={handleChange}
           />
-           </Form.Group>
-           <Form.Group size="lg" controlId="lastName">
+        </Form.Group>
+        <Form.Group size="lg" controlId="lastName">
           <Form.Label>LastName</Form.Label>
           <Form.Control
             autoFocus
@@ -63,8 +64,8 @@ function SignupForm() {
             value={userObject.lastName}
             onChange={handleChange}
           />
-           </Form.Group>
-        
+        </Form.Group>
+
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -76,7 +77,7 @@ function SignupForm() {
             onChange={handleChange}
           />
         </Form.Group>
-        
+
         <Form.Group size="lg" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -87,19 +88,16 @@ function SignupForm() {
             onChange={handleChange}
           />
         </Form.Group>
-        <div className='alert'>
-        Already registered?<Link to="/login">
-          Login
-        </Link>
+        <div className="alert">
+          Already registered?<Link to="/login">Login</Link>
         </div>
-        
-        <Button block size="lg" type="submit" >
+
+        <Button block size="lg" type="submit">
           SignUp
         </Button>
       </Form>
-      </div>
-    )
+    </div>
+  );
 }
-
 
 export default SignupForm;

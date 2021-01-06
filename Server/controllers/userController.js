@@ -1,5 +1,4 @@
-
-const User = require('../models/user');
+const User = require("../models/user");
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
@@ -12,19 +11,18 @@ module.exports = {
   register: (req, res) => {
     const { firstName, lastName, email, password, isLoggedIn } = req.body;
     // ADD VALIDATION
-    User.findOne({ 'email': email }, (err, userMatch) => {
+    User.findOne({ email: email }, (err, userMatch) => {
       if (userMatch) {
         return res.json({
-          error: `Sorry, there is already a user with the email: ${email}`
+          error: `Sorry, there is already a user with the email: ${email}`,
         });
       }
       const newUser = new User({
-
-        "firstName":firstName,
-         "lastName":lastName,
-        'email': email,
-        'password': password,
-        'isLoggedIn': isLoggedIn
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        isLoggedIn: isLoggedIn,
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
@@ -35,10 +33,10 @@ module.exports = {
   logout: (req, res) => {
     if (req.user) {
       req.session.destroy();
-      res.clearCookie('connect.sid'); // clean up!
-      return res.json({ msg: 'logging you out' });
+      res.clearCookie("connect.sid"); // clean up!
+      return res.json({ msg: "logging you out" });
     } else {
-      return res.json({ msg: 'no user to log out!' });
+      return res.json({ msg: "no user to log out!" });
     }
   },
   auth: function (req, res, next) {
@@ -51,5 +49,5 @@ module.exports = {
       delete cleanUser.password;
     }
     res.json({ user: cleanUser });
-  }
+  },
 };

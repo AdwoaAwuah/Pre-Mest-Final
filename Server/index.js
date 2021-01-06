@@ -30,6 +30,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
+//production
+if (config.NODE_ENV === "production") {
+  app.use(express.static("meddig/client/build"));
+}
+
+//Routers
 app.use(authRouter);
 app.use(apiRouter);
 app.use(userRouter);
@@ -37,10 +43,6 @@ app.use(userRouter);
 // Usage of middlewares here
 app.use(morgan("default"));
 // app.use(authenticateUser);
-
-// app.get("/", (request, response)=> {
-//     response.send("<h1>Hey backend working</h1>")
-// })
 
 app.listen(config.PORT, () => {
   console.log(`Server started on PORT: ${config.PORT}`);

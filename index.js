@@ -1,17 +1,17 @@
 const express = require("express");
-const config = require("./helpers/config");
+const config = require("./Server/helpers/config");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const session = require("express-session");
 // User own imports
-const { authenticateUser } = require("./middlewares/auth");
-const authRouter = require("./routers/auth");
-const apiRouter = require("./routers/symptomsChecker");
-const User = require("./models/user");
-const userRouter = require("./routers/userRoute");
-const passport = require("./passport");
+const { authenticateUser } = require("./Server/middlewares/auth");
+const authRouter = require("./Server/routers/auth");
+const apiRouter = require("./Server/routers/symptomsChecker");
+const User = require("./Server/models/user");
+const userRouter = require("./Server/routers/userRoute");
+const passport = require("./Server/passport");
 
 // Mongoose Connection
 mongoose

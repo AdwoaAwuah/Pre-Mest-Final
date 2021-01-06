@@ -32,7 +32,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 //production
 if (config.NODE_ENV === "production") {
-  app.use(express.static("meddig-app/client/build"));
+  app.use(express.static("client/build"));
 }
 
 //Routers
